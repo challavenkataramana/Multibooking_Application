@@ -1,0 +1,78 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #0f1214; 
+  padding: 50px 130px;
+  border-top: 1px solid #ddd; 
+}
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px; 
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.portal-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.portal-name h3 {
+  
+  font-size: 24px;
+  color:white;
+}
+
+
+.portal-details > div:last-child {
+  display: flex;
+  gap: 15px; 
+}
+.portal-details > div:last-child svg {
+  cursor: pointer;
+}
+
+
+.country-dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-left:70px;
+  margin-top:10px;
+  
+}
+
+.country-dropdown select {
+  padding: 5px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width:200%;
+}
+
+.company-info p{
+  text-align:left;
+  margin-top:5px;
+  color:white;
+
+}
+.company-info a{
+  color:white;
+  text-decoration:none;
+  cursor:pointer;
+}

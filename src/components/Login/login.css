@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.logo-box {
+    background: white;
+    padding: 40px 80px;
+    width: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+
+}
+.logo-box h2 {
+    margin-bottom: 20px;
+}
+
+.google-logo {
+    width: 30px;
+}
+
+.application-logo{
+    margin-bottom:10px;
+    width: 30px;
+}
+
+.logo-box button {
+    width: 100%;
+    padding: 10px 0px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin: 20px 0px;
+    border-radius: 30px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid #999;
+    background: transparent;
+}
+
+.logo-box button img {
+    margin-right: 10px;
+}
+
+.logo-box span {
+    display: block;
+    width: 40px;
+    margin: auto;
+    background: white;
+    font-family: 14px;
+    margin-top: -16px;
+}
+
+.logo-box input {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #999;
+    outline: 0;
+    padding: 15px 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+
+}
+
+::placeholder {
+    font-weight: 500;
+    color: #333;
+
+}
+
+.logo-box form button {
+    background: #000;
+    margin-bottom: 15px;
+    border: 0;
+    color: #fff;
+
+}
+

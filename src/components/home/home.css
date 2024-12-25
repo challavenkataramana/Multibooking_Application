@@ -1,0 +1,293 @@
+
+.home-container {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: white;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #343a40;
+  color: white;
+  padding: 15px 20px;
+}
+
+.app-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-button,
+.logout-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.nav-button {
+  background-color: #6c757d;
+  color: white;
+}
+
+.nav-button:hover {
+  background-color: #5a6268;
+}
+
+.logout-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
+}
+
+
+
+.intro{
+  margin:40px 130px;
+  text-align:left;
+  flex-wrap: wrap;
+
+}
+.intro p{
+  line-height: 2;
+}
+
+.search-section {
+  margin:20px 130px;
+  padding: 5px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: -4px 6px 12px rgba(0, 0, 0, 0.2);  
+
+}
+
+.search-bar {
+  gap:10px;
+  display:flex;
+  align-items:center;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.group{
+   flex:1;
+   position:relative;
+
+}
+.group:focus-within {
+  border-radius:5px;
+  box-shadow: 0 0 5px rgba(0, 0, 255, 0.9);
+}
+#place-holder {
+  margin-left:5px;
+  text-align:left;
+  opacity: 0.5;
+}
+
+
+.search-input {
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  min-width: 200px;
+  outline: none;
+  flex: 1;
+  font-size:18px;
+  height:auto;
+}
+.search-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+
+.providers-section {
+  margin-left:130px;
+  margin-right:130px;
+  margin-top:60px;
+}
+
+.provider-logos {
+  display: flex;
+  justify-content:space-between;
+  
+}
+
+.hot-deals{
+  margin-top:80px;
+  margin-left:140px;
+  text-align:left;
+}
+
+
+.carousel-section {
+  margin: 20px 130px;
+}
+
+.carousel {
+  position: relative;
+  display: flex;
+}
+
+.carousel-cards {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  justify-content:space-between;
+  padding:7px;
+}
+
+.carousel-card {
+  margin: 0 10px; 
+  border-radius: 10px; 
+  box-shadow: -4px 6px 12px rgba(0, 0, 0, 0.2); 
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  text-align: left;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white; 
+  overflow: hidden; 
+}
+
+
+.carousel-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 0px 16px 6px rgba(0, 0, 0, 0.25); 
+}
+
+
+.carousel-card img {
+  border-radius: 10px 10px 0 0;
+  width:320px;
+  height:267px;
+  margin-bottom:15px;
+  
+}
+
+.carousel-card h3 {
+  font-size: 18px;
+  margin-bottom:5px;
+  margin-left:8px;
+
+}
+
+.carousel-card p {
+  font-size: 14px;
+  margin-bottom:5px;
+  margin-left:8px;
+}
+
+.check-deals-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius:5px;
+  font-size: 14px;
+  margin-top: 10px;
+  margin:20px 20px;
+}
+
+.check-deals-button:hover {
+  background-color: #0056b3;
+}
+
+
+.carousel .prev,
+.carousel .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  color: rgb(39, 26, 26);
+  border:none;
+  padding: 5px;
+  width:40;
+  height:40;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2)
+}
+.placeholder-image{
+    width:320px;
+    height:267px;
+    background:#dfe0e0
+}
+
+.carousel .prev {
+  left: 20px;
+}
+
+.carousel .next {
+  right: 20px;
+}
+
+.carousel .prev:hover,
+.carousel .next:hover {
+  background-color: rgba(199, 183, 183, 0.8);
+}
+
+
+.top-hotels h2{
+    margin-left:140px;
+    text-align:left;
+    margin-top:40px;
+}
+.cities-tabs{
+  margin-left:140px;
+  text-align:left;
+  margin-top:10px;
+}
+.cities-tabs button{
+  padding: 10px 10px;
+  font-size: 16px;
+  color: rgb(32, 19, 19);
+  border:none;
+  border-bottom: 1px solid rgb(189, 186, 186) ;
+  cursor: pointer;
+  background:none;
+
+ 
+}
+.cities-tabs button:hover{
+  background-color:rgb(238, 233, 233);
+}
+.city-tab.active{
+  border-bottom: 2px solid rgb(27, 26, 26) ;
+}
+.about-section {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #201a1a;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
