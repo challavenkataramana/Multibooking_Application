@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Multibooking_Application/static/css/main.c101212d.css",
+    "main.js": "/Multibooking_Application/static/js/main.9ed38fcd.js",
+    "static/media/application-logo.png": "/Multibooking_Application/static/media/application-logo.75bf74ef5d01e9e3e054.png",
+    "index.html": "/Multibooking_Application/index.html",
+    "main.c101212d.css.map": "/Multibooking_Application/static/css/main.c101212d.css.map",
+    "main.9ed38fcd.js.map": "/Multibooking_Application/static/js/main.9ed38fcd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c101212d.css",
+    "static/js/main.9ed38fcd.js"
+  ]
+}
