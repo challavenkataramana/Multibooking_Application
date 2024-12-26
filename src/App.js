@@ -5,6 +5,7 @@ import { Register } from "./components/Register/register";
 import { Home } from "./components/home/home";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { HotelData } from './components/Hotel-details/hotel-data';
+import Hotels from './components/Hotels/hotels';
 import {PrivateRoute} from './components/privatecomponent';
 
 function App() {
@@ -40,6 +41,15 @@ function App() {
             </PrivateRoute>
           }
         /> 
+        <Route
+          path="/hotels"
+          element={
+            <PrivateRoute isAuthenticated={isAuthenticated}>
+              <Hotels handleLogout={handleLogout}/>
+            </PrivateRoute>
+          }
+        /> 
+
         <Route
           path="/Login"
           element={isAuthenticated ? <Navigate to="/home" replace /> : <Login />}

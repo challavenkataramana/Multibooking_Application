@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { localCardData } from './hot-deals';
+import { localCardData } from './card-data';
 
 export const Banglore = () => {
   const [cardData, setCardData] = useState(localCardData);

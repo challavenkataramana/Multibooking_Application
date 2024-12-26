@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { localCardData } from './Top_rated-hotels/hot-deals';
+import { localCardData } from './Top_rated-hotels/card-data';
 import {useNavigate} from "react-router-dom";
 
 export const Cards = ({ handleLogout }) => {
@@ -14,6 +14,7 @@ export const Cards = ({ handleLogout }) => {
                 "https://script.google.com/macros/s/AKfycbzsUZhlA-4ZbOJMp6n2qSZHrcA_s31ZGpIG-R0DAouC4z7HEPoWlyZXnvCXnHkW5lUw/exec"
             );
             const imageData = await imageResponse.json();
+            console.log(imageData);
             const combinedData = localCardData.map((localCard) => {
                 const image = imageData.find((item) => item.id === localCard.id);
                 return {

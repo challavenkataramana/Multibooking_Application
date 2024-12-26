@@ -1,0 +1,119 @@
+.hotel-container {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: white;
+}
+
+.hotels-carousel-section {
+  margin: 20px 130px;
+}
+
+.hotels-carousel {
+  position: relative;
+  display: flex;
+}
+
+.hotels-carousel-cards {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  justify-content: space-between;
+  padding: 7px;
+}
+
+.hotels-carousel-card {
+  margin: 0 10px;
+  border-radius: 10px;
+  box-shadow: -4px 6px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  text-align: left;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  overflow: hidden;
+}
+
+
+.hotels-carousel-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 0px 16px 6px rgba(0, 0, 0, 0.25);
+}
+
+
+.hotels-carousel-card img {
+  border-radius: 10px 10px 0 0;
+  width: 320px;
+  height: 267px;
+  margin-bottom: 15px;
+
+}
+
+.hotels-carousel-card h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+  margin-left: 8px;
+
+}
+
+.hotels-carousel-card p {
+  font-size: 14px;
+  margin-bottom: 5px;
+  margin-left: 8px;
+}
+
+.hotels-check-deals-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-top: 10px;
+  margin: 20px 20px;
+}
+
+.hotels-check-deals-button:hover {
+  background-color: #0056b3;
+}
+
+
+.hotels-carousel .hotels-prev,
+.hotels-carousel .hotels-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  color: rgb(39, 26, 26);
+  border: none;
+  padding: 5px;
+  width: 40;
+  height: 40;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2)
+}
+
+.hotels-placeholder-image {
+  width: 320px;
+  height: 267px;
+  background: #dfe0e0
+}
+
+.hotels-carousel .hotels-prev {
+  left: 20px;
+}
+
+.hotels-carousel .hotels-next {
+  right: 20px;
+}
+
+.hotels-carousel .prev:hover,
+.hotels-carousel .next:hover {
+  background-color: rgba(199, 183, 183, 0.8);
+}

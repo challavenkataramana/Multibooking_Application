@@ -6,29 +6,21 @@ import { Mumbai } from './Top_rated-hotels/mumbai';
 import Footer from './footer';
 import { Datepick } from './dates';
 import { Cards } from './cards.jsx';
+import {useNavigate} from "react-router-dom";
+import {Header} from './header';
 
 export const Home = ({ handleLogout }) => {
 
   const [currentTab, setCurrentTab] = useState("banglore");
-
+  const navigate=useNavigate();
 
   const handleSubmit = (city) => {
     setCurrentTab(city);
   }
-
   return (
     <div className="home-container">
       {/* Header Section */}
-      <header className="header">
-        <div className="app-name">Booking Portal</div>
-        <nav className="nav-buttons">
-          <button className="nav-button">Hotels</button>
-          <button className="nav-button">Sports Grounds</button>
-          <button className="logout-button" onClick={handleLogout}>
-            Logout
-          </button>
-        </nav>
-      </header>
+      <Header handleLogout={handleLogout} />
 
       <div className="intro">
         <h2>Save up to 55% on your next hotel stay</h2>

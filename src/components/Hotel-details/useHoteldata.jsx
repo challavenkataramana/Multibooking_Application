@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { localCardData } from '../home/Top_rated-hotels/hot-deals';
+import { localCardData } from '../home/Top_rated-hotels/card-data';
 export const useHotelData = (id) => {
     const [hotelName, setHotelName] = useState("");
     const [description, setDescription] = useState("");
