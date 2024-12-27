@@ -53,12 +53,37 @@ export const HotelData = ({ handleLogout }) => {
                     </div>
                 </div>
             </div>
-            <div className="box">
-                <div className="box-title">
-                     Most Famous Features
+            <div className="content-row">
+                <div className="box">
+                    <div className="box-title">
+                        Most Famous Features
+                    </div>
+                    <div className="box-content">
+                        Non-Smoking Area
+                    </div>
                 </div>
-                <div className="box-content">
-                     non Smoking Area
+                <div className="booking-form-container">
+                    <form className="booking-form">
+                        <div className="form-group">
+                            <label htmlFor="checkin-date">Check-in Date:</label>
+                            <input type="date" id="checkin-date" className="input-field" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="checkout-date">Check-out Date:</label>
+                            <input type="date" id="checkout-date" className="input-field" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="name">Name:</label>
+                            <input type="text" id="name" className="input-field" placeholder="Your Name" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="email">Email:</label>
+                            <input type="email" id="email" className="input-field" placeholder="Your Email" />
+                        </div>
+                        <div className="form-group">
+                            <button type="submit" className="book-button">Book</button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <Footer />

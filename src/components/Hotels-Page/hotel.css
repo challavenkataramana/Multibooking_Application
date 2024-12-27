@@ -5,9 +5,17 @@
   font-family: Arial, sans-serif;
   background-color: white;
 }
-
+.hotel-group-color{
+    color:rgb(43, 43, 138);
+    margin:0 150px;
+    text-align:left;
+    font-weight:1.3rem;
+    margin-top:30px;
+    margin-bottom:10px;
+}
 .hotels-carousel-section {
-  margin: 20px 130px;
+  margin: 0 130px;
+  
 }
 
 .hotels-carousel {
@@ -29,7 +37,7 @@
   box-shadow: -4px 6px 12px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   text-align: left;
-  width: 320px;
+  width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -46,8 +54,8 @@
 
 .hotels-carousel-card img {
   border-radius: 10px 10px 0 0;
-  width: 320px;
-  height: 267px;
+  width: 100%;
+  height: 100%;
   margin-bottom: 15px;
 
 }
@@ -100,9 +108,11 @@
 }
 
 .hotels-placeholder-image {
-  width: 320px;
-  height: 267px;
-  background: #dfe0e0
+  width: 250px;
+  height:180px;
+  background: #dfe0e0;
+  margin-bottom: 15px;
+
 }
 
 .hotels-carousel .hotels-prev {
