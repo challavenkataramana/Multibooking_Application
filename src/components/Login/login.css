@@ -1,82 +1,292 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 70px;
+  gap: 0px;
+  min-height: 100vh;
+  background-color: rgb(252, 252, 252);
+  
+}
+
+.login-image-container {
+  width: 50%;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  margin-left:130px;
+ 
+}
+
+.login-image {
+  width: 90%;
+  height:auto;
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius:15px;
+}
+
+.login-benefits {
+  width:90%;
+  display: flex;
+  flex-direction:column;
+  background:#f1f1f1;
+ 
+  border-bottom-left-radius:15px;
+  border-bottom-right-radius:15px;
+}
+
+#login-text {
+  margin-top: 50px;
+  text-align: left; 
+  width: 100%; 
+  font-family: 'Poppins', sans-serif; 
+  font-size:1.2rem;
+  margin-left:60px;
+  margin-bottom:20px;
+}
+
+#benefits,#benefit-last{
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif; 
+  margin-top:10px;
+  text-align:left;
+  margin-left:60px;
+}
+#benefit-last{
+   margin-bottom:30px;
+}
+
+.benefit-icon {
+  margin-right: 8px;
+  color:black;
+  font-size: 20px;
+}
+
+/* Login Form styling */
 
 .logo-box {
-    background: white;
-    padding: 40px 80px;
-    width: 500px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 15px;
-
-}
-.logo-box h2 {
-    margin-bottom: 20px;
-}
-
-.google-logo {
-    width: 30px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgb(244, 248, 247);
+  padding: 30px 50px;
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0.4, 0.15);
+  text-align: left;
+  transition: all 0.3s ease-in-out;
+  margin-right:130px;
 }
 
-.application-logo{
-    margin-bottom:10px;
-    width: 30px;
+/* same for login register */
+#website-name {
+  font-size: 1.33rem;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif; 
+  text-align: left;
+  color: rgb(3, 63, 112);
+  margin-bottom: 50px;
+}
+#quote {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif; 
+  text-align: left;
 }
 
-.logo-box button {
-    width: 100%;
-    padding: 10px 0px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    margin: 20px 0px;
-    border-radius: 30px;
-    font-weight: 500;
-    cursor: pointer;
-    border: 1px solid #999;
-    background: transparent;
+.logo-box .or-continue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0;
 }
 
-.logo-box button img {
-    margin-right: 10px;
+.logo-box .or-continue hr {
+  flex: 1;
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 0 10px;
 }
 
-.logo-box span {
-    display: block;
-    width: 40px;
-    margin: auto;
-    background: white;
-    font-family: 14px;
-    margin-top: -16px;
+.logo-box .or-continue span {
+  font-size: 14px;
+  color: #666;
+  padding: 0 10px;
 }
+
 
 .logo-box input {
-    width: 100%;
-    background: transparent;
-    border: 1px solid #999;
-    outline: 0;
-    padding: 15px 10px;
-    border-radius: 10px;
-    margin-top: 10px;
+  width: 100%;
+  background: transparent;
+  border: 1px solid #535050;
+  outline: 0;
+  padding: 10px 10px;
+  border-radius: 25px;
+  margin-top: 10px;
+}
 
+.logo-box input:hover {
+  background: #e0e7e7;
 }
 
 ::placeholder {
-    font-weight: 500;
-    color: #333;
-
+  font-weight: 500;
+  color: #333;
 }
 
-.logo-box form button {
-    background: #000;
-    margin-bottom: 15px;
-    border: 0;
-    color: #fff;
-
+#submit {
+  width: 100%;
+  padding: 10px 0px;
+  margin: 20px 0px;
+  border-radius: 30px;
+  cursor: pointer;
+  border: 1px solid #f3eeee;
+  font-weight: 500;
+  background-color: rgb(14, 114, 228);
+  color: rgb(255, 249, 249);
+  font-size: 1rem;
+}
+#submit:hover {
+  background-color: rgb(95, 124, 221);
+}
+.register-route{
+   font-family:'Poppins',sans-serif;
 }
 
+
+.register-route {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+#sign-up {
+  background: none;
+  border: none;
+  color: #1e3e6e;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+#sign-up:hover {
+  color: #12264e;
+  text-decoration: underline;
+}
+
+/* Google button .. Same for login and register*/
+
+#google-login-btn {
+  background: #000;
+  margin-bottom: 15px;
+  border: 0;
+  font-weight: 500;
+  color: #fff;
+  padding: 10px 0px;
+  border-radius: 30px;
+}
+
+#google-login-btn:hover {
+  background-color: #357abd;
+  cursor: pointer;
+}
+
+#google-login-btn:disabled {
+  background-color: #a0c4ff;
+  cursor: not-allowed;
+}
+
+.google-icon {
+  transform: translateY(6%);
+  margin-right: 8px;
+}
+
+
+
+
+/* Responsive for Mobile */
+@media screen and (max-width: 750px) {
+  .login-container {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .login-image-container {
+    width: 90%;
+    margin: 0;
+  }
+
+  .login-image {
+    height: auto;
+    width:100%;
+    border-top-left-radius:10px;
+    border-top-right-radius: 10px;
+  }
+
+  .login-benefits {
+    width: 100%;
+    text-align: center;
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius: 10px;
+    padding: 10px;
+  }
+
+  #login-text {
+    text-align: left;
+    margin-left: 0;
+    font-size: 1rem;
+  }
+
+  #benefits,
+  #benefit-last {
+    text-align: left;
+    margin-left: 0;
+    font-size: 14px;
+  }
+
+  .logo-box {
+    width: 90%;
+    margin: 0;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  #website-name {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  #quote {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .logo-box input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  #submit,
+  #google-login-btn {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .register-route {
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .google-icon {
+    font-size: 16px;
+  }
+}

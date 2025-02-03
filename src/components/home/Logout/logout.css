@@ -1,0 +1,369 @@
+
+.profile-icon{
+  transform:translateY(5%);
+  align-items:center;
+  color: rgb(238, 230, 230); 
+  font-size:33px;
+}
+.logout-button{
+  background:none;
+  text-decoration: none;
+  border:none;
+  padding:0;
+  cursor:pointer;
+}
+.logout-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display:flex;
+    justify-content:right;
+    align-items:center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .logout-modal-overlay.show {
+    opacity:1;
+    visibility: visible;
+
+  }
+  
+  .logout-modal-content {
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    width: 400px;
+    margin-right:130px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(143, 124, 124, 0.801);
+    text-align: center;
+    position: absolute;
+    align-items:center;
+    transform: scale(0.8);
+    top:80px;
+    transform:translateY(10px);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  .logout-modal-content.show {
+    transform: scale(1);
+    opacity: 1;
+    transform:translateY(0);
+  }
+  
+  .logout-close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+  }
+  .logout-close-button:hover {
+    color: red;
+  }
+
+  /* Inner Content  */
+  
+  .logout-content{
+    display:flex;
+    flex-direction:column;
+    color:black;
+    gap:10px;
+  }
+  .user-info{
+    display:flex;
+    gap:10px;
+  }
+  .user-icon{
+    transform:translateY(15%);
+    align-items:center;
+    color: rgb(29, 27, 27); 
+    font-size:33px;
+  }
+  .user-details{
+    display:flex;
+    flex-direction: column;
+    gap:2px;
+    color:black;
+    font-size:1.1rem;
+    font-style: arial;
+    overflow: hidden; 
+    max-width: 100%;
+    word-wrap: break-word;
+    white-space: normal; 
+    text-align:left;
+    
+  }
+
+
+ .your-bookings-button,.recently-viewed-button,.logout{
+   background-color:white;
+   width:100%;
+   padding:15px 0px;
+   font-size:1rem;
+   border:none;
+   text-align:left; 
+   cursor:pointer;
+ }
+ .button-inside{
+    margin-left:80px;
+ }
+ .your-bookings-button:hover,.recently-viewed-button:hover{
+    background-color:rgb(238, 236, 236);
+    border-radius:8px;
+ }
+ .logout:hover{
+  background-color:rgb(218, 54, 54);
+  border-radius:5px;
+}
+
+
+ .icon{
+  transform:translateY(20%);
+   align-items:center;
+   color: black; 
+   margin-right: 8px; 
+   font-size: 18px;
+ }
+
+/* General Styles */
+@media (max-width: 768px) {
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    right: -100%; 
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  .sidebar-overlay.open {
+    right: 0; /* Move the sidebar into view */
+  }
+
+  .sidebar-content {
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .sidebar-overlay.open .sidebar-content {
+    transform: translateX(0);
+  }
+
+  .close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: #000;
+    cursor: pointer;
+  }
+  .button-inside{
+    margin-left:10px;
+  }
+
+}
+
+
+
+
+/* 
+
+  /* Mobile Adjustments for Carousel 
+  .carousel {
+    width: 100%;
+    overflow: hidden;
+    margin: 0; 
+    padding: 0 15px;
+  }
+
+  .carousel-cards {
+    display: flex;
+    gap: 12px; 
+    padding: 12px 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; 
+    -webkit-overflow-scrolling: touch;
+    scroll-padding: 0 15px;
+    scrollbar-width: none;
+    background: #f7f4f4;
+    border-radius: 5px;
+  }
+
+  .carousel-card {
+    flex: 0 0 auto;
+    width: 220px;
+    height: auto;
+    scroll-snap-align: start;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 0px;
+    text-align: left;
+  }
+
+  .carousel-card img {
+    width: 100%;
+    height: 150px; 
+  }
+
+  .carousel-card h3 {
+    font-size: 16px; 
+    margin: 4px 0;
+    margin-left: 7px;
+  }
+
+  .carousel-card p {
+    font-size: 12px;
+    color: #666;
+    margin: 4px 0;
+    margin-left: 7px;
+  }
+
+  .carousel-card .check-deals-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 6px 12px; 
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px; 
+  }
+
+  .carousel-card .check-deals-button:hover {
+    background-color: #0056b3;
+  }
+
+  .carousel .prev,
+  .carousel .next {
+    display: none;
+  }
+
+  /* Header and Navigation 
+  .header {
+    padding: 10px 15px;
+  }
+
+  .app-name {
+    font-size: 20px;
+    margin-left: 10px;
+  }
+
+  .nav-buttons {
+    gap: 5px;
+    margin-right: 10px;
+  }
+
+  .nav-button {
+    padding: 8px 12px; 
+    font-size: 14px; 
+  }
+
+  /* Adjust Intro Section 
+  .intro {
+    margin: 20px 15px; 
+    text-align: left; 
+  }
+
+  .intro h2 {
+    font-size: 20px; 
+  }
+
+  .intro p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* Search Section 
+  .search-section {
+    margin: 20px 15px;
+    padding: 10px;
+  }
+
+  .search-bar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .group {
+    width: 100%; 
+  }
+
+  .search-input {
+    min-width: 100%; 
+    font-size: 16px; 
+  }
+
+  .search-button {
+    width: 100%; 
+    font-size: 16px;
+  }
+
+  /* Providers Section 
+  .providers-section {
+    margin: 20px 15px; 
+    overflow-x: auto;
+    display: flex;
+    scroll-snap-type: x mandatory; 
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    padding: 12px 0;
+    scrollbar-width: none;
+  }
+
+  .provider-logos {
+    justify-content: center;
+    gap: 20px;
+    scroll-snap-align: start; 
+  }
+
+  .provider-logos img {
+    width: 50px; 
+    height: auto;
+  }
+
+  /* Hot Deals Section 
+  .hot-deals {
+    margin: 40px 15px 20px; 
+    text-align: left;
+  }
+
+  .top-hotels h2 {
+    margin: 20px 15px; 
+    text-align: left;
+    font-size: 20px; 
+  }
+
+  .cities-tabs {
+    margin: 10px 15px; 
+    text-align: left; 
+  }
+
+  .cities-tabs button {
+    font-size: 14px; 
+    padding: 8px 10px;
+  }
+
+  .footer {
+    padding: 20px 5px; 
+    text-align: left; 
+  } */

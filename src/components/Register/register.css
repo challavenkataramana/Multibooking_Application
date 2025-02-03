@@ -1,97 +1,191 @@
+/* Reset styles  */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-.logo-box {
-    background: white;
-    padding: 40px 70px;
-    width: 500px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 15px;
-
-}
-.logo-box h2 {
-    margin-bottom: 20px;
+/* Main container */
+.register-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 70px;
+  gap: 40px;
+  min-height: 100vh;
+  background-color: #f8f9fa;
 }
 
-.google-logo {
-    width: 30px;
+/* Register box */
+.register-box {
+  width: 400px;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: all 0.3s ease-in-out;
+  margin-right:130px;
 }
 
-.application-logo{
-    margin-bottom:10px;
-    width: 30px;
+/* Website title */
+#website-name {
+  font-size: 1.33rem;
+  margin-bottom: 20px;
+  text-align: left;
+  color: rgb(3, 63, 112);
+  margin-bottom: 50px;
 }
 
-.logo-box button {
-    width: 100%;
-    padding: 10px 0px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    margin: 20px 0px;
-    border-radius: 30px;
-    font-weight: 500;
-    cursor: pointer;
-    border: 1px solid #999;
-    background: transparent;
+/* Subtitle */
+#quote {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif; 
+  text-align: left;
 }
 
-.logo-box button img {
-    margin-right: 10px;
+/* Google button */
+.google-login-btn {
+  width: 100%;
+  padding: 10px 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 30px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background: white;
+  transition: all 0.3s ease-in-out;
 }
 
-.logo-box span {
-    display: block;
-    width: 40px;
-    margin: auto;
-    background: white;
-    font-family: 14px;
-    margin-top: -16px;
+.google-login-btn:hover {
+  background: #f1f1f1;
 }
 
-.logo-box input {
-    width: 100%;
-    background: transparent;
-    border: 1px solid #999;
-    outline: 0;
-    padding: 15px 10px;
-    border-radius: 10px;
-    margin-top: 10px;
-
+.google-icon {
+  margin-right: 8px;
 }
 
+
+.or-continue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.or-continue hr {
+  flex: 1;
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 0 10px;
+}
+
+.or-continue span {
+  font-size: 14px;
+  color: #666;
+  padding: 0 10px;
+}
+
+
+.register-box input {
+  width: 100%;
+  background: transparent;
+  border: 1px solid #666;
+  outline: none;
+  padding: 12px 14px;
+  border-radius: 25px;
+  margin-top: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.register-box input:hover,
+.register-box input:focus {
+  background: #f0f0f0;
+  border-color: #1e3e6e;
+}
+
+/* Placeholder text */
 ::placeholder {
-    font-weight: 500;
-    color: #333;
-
+  font-weight: 500;
+  color: #555;
 }
 
-.logo-box form button {
-    background: #000;
-    margin-bottom: 15px;
-    border: 0;
-    color: #fff;
-
+/* Register button */
+#submit {
+  width: 100%;
+  padding: 12px;
+  margin: 15px 0;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background: #1e3e6e;
+  color: white;
+  transition: all 0.3s ease-in-out;
 }
 
-#submit{
-    background-color: rgb(185, 179, 179);
-    color:black;
-    font-size: 1rem;
+#submit:hover {
+  background-color: #12264e;
 }
 
-logo-box GooleLogin {
-    display: flex;
-    justify-content: center;  
-    align-items: center;      
-    height: 100vh;            
-    width: 100%;            
-    position: relative;      
+/* Login redirect */
+.login-route {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
 }
 
+#sign-in {
+  background: none;
+  border: none;
+  color: #1e3e6e;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+#sign-in:hover {
+  color: #12264e;
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .register-container {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .register-box {
+    width: 90%;
+    margin: 0;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  #website-name {
+    font-size: 18px;
+  }
+
+  .google-login-btn {
+    font-size: 14px;
+  }
+
+  .register-box input {
+    padding: 10px;
+  }
+
+  #submit {
+    padding: 10px;
+    font-size: 14px;
+  }
+}

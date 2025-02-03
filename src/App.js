@@ -5,8 +5,10 @@ import { Register } from "./components/Register/register";
 import { Home } from "./components/home/home";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { HotelData } from './components/Hotel-details/hotel-data';
-import Hotels from './components/Hotels-Page/hotels';
 import {PrivateRoute} from './components/privatecomponent';
+import SearchResults from './components/Filter/searchresults';  
+import {YourBookings} from './components/home/Your-Bookings/bookings';
+import {RecentlyViewed} from './components/home/RecentlyViewed/recently-viewed';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -34,7 +36,7 @@ function App() {
           }
         />
         <Route
-          path="/hotel-details/:id"
+          path="/hotel-details"
           element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <HotelData handleLogout={handleLogout} />
@@ -42,13 +44,29 @@ function App() {
           }
         /> 
         <Route
-          path="/hotels"
+          path="/search-results"
           element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
-              <Hotels handleLogout={handleLogout}/>
+              <SearchResults handleLogout={handleLogout} />
             </PrivateRoute>
           }
         /> 
+          <Route
+          path="/yourbookings"
+          element={
+            <PrivateRoute isAuthenticated={isAuthenticated}>
+              <YourBookings handleLogout={handleLogout} />
+            </PrivateRoute>
+          }
+        />
+         <Route
+          path="/recentlyviewed"
+          element={
+            <PrivateRoute isAuthenticated={isAuthenticated}>
+              <RecentlyViewed handleLogout={handleLogout} />
+            </PrivateRoute>
+          }
+        />
 
         <Route
           path="/Login"

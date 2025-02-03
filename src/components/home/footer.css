@@ -76,3 +76,112 @@
   text-decoration:none;
   cursor:pointer;
 }
+
+
+
+
+/* Base styles for mobile */
+@media (max-width: 768px) {
+  .footer {
+    padding: 30px 0px;
+  }
+
+  .footer-top {
+    padding: 0 10px;
+  }
+
+  .footer-row {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .portal-details {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .portal-name h3 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .country-dropdown {
+    margin-left: 0;
+    margin-top: 15px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .country-dropdown select {
+    width: 50%;
+    font-size: 16px;
+    padding: 8px;
+    text-align:left;
+  }
+
+  .company-info p {
+    font-size: 14px;
+    margin-top: 10px;
+    text-align:left;
+  }
+
+  .company-info a {
+    font-size: 14px;
+  }
+}
+
+/* Further customizations for smaller screens (mobile-first design) */
+@media (max-width: 480px) {
+  .footer {
+    padding: 20px 10px;
+  }
+
+  .footer-top {
+    padding: 0 5px;
+  }
+
+  .footer-row {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+   
+  }
+
+  .portal-details {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .portal-name h3 {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .country-dropdown {
+    margin-left: 0;
+    margin-top: 10px;
+    align-items: center;
+    width: 50%;
+  }
+
+  .country-dropdown select {
+    width: 100%;
+    font-size: 14px;
+    padding: 6px;
+  }
+
+  .company-info p {
+    font-size: 12px;
+    
+    margin-top: 5px;
+    text-align:left;
+  }
+
+  .company-info a {
+    font-size: 12px;
+    
+  }
+}

@@ -3,10 +3,10 @@ import { localCardData } from './Top_rated-hotels/card-data';
 import {useNavigate} from "react-router-dom";
 
 export const Cards = ({ handleLogout }) => {
-
     const [cardData, setCardData] = useState(localCardData);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const navigate=useNavigate();
+    const [isMobile, setIsMobile] = useState(false);  // New state to track screen size
+    const navigate = useNavigate();
 
     const fetchCardData = async () => {
         try {
@@ -30,8 +30,19 @@ export const Cards = ({ handleLogout }) => {
 
     useEffect(() => {
         fetchCardData();
-    }, []);
 
+        // Check screen size on load and resize
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);  // Assume mobile for screens <= 768px
+        };
+
+        handleResize();  // Check size on initial load
+        window.addEventListener("resize", handleResize);  // Listen for resize
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
 
     const prevSlide = () => {
         setCurrentIndex((prevIndex) =>
@@ -45,26 +56,35 @@ export const Cards = ({ handleLogout }) => {
         );
     };
 
-    const handlecheckdeals=(id)=>{
+    const handlecheckdeals = (id) => {
         navigate(`/hotel-details/${id}`);
-    }
+    };
 
     return (
         <div className="carousel">
-            <button className="prev" onClick={prevSlide}>❮</button>
+            {!isMobile && (
+                <>
+                    <button className="prev" onClick={prevSlide}>❮</button>
+                    <button className="next" onClick={nextSlide}>❯</button>
+                </>
+            )}
             <div className="carousel-cards">
                 {cardData.slice(currentIndex, currentIndex + 3).map((card) => (
                     <div className="carousel-card" key={card.id}>
-                        {card.imgSrc ? (<img src={card.imgSrc} alt={card.title} />
-                        ) : (<div className="placeholder-image"></div>)}
+                        {card.imgSrc ? (
+                            <img src={card.imgSrc} alt={card.title} />
+                        ) : (
+                            <div className="placeholder-image"></div>
+                        )}
                         <h3>{card.title}</h3>
                         <p>{card.description}</p>
-                        <p>{card.price}</p><span><p>goa</p></span>
-                        <button className="check-deals-button" onClick={()=>handlecheckdeals(card.id)}>Check Deals</button>
+                        <p>{card.price}</p><span><p>Goa</p></span>
+                        <button className="check-deals-button" onClick={() => handlecheckdeals(card.id)}>
+                            Check Deals
+                        </button>
                     </div>
                 ))}
             </div>
-            <button className="next" onClick={nextSlide}>❯</button>
         </div>
     );
 };

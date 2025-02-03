@@ -6,17 +6,30 @@ import { Mumbai } from './Top_rated-hotels/mumbai';
 import Footer from './footer';
 import { Datepick } from './dates';
 import { Cards } from './cards.jsx';
-import {useNavigate} from "react-router-dom";
-import {Header} from './header';
+import { useNavigate } from "react-router-dom";
+import { Header } from './header';
 
 export const Home = ({ handleLogout }) => {
 
   const [currentTab, setCurrentTab] = useState("banglore");
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = (city) => {
     setCurrentTab(city);
   }
+
+  const handleSearch = (searchData) => {
+    const { destination, startDate, endDate, hallType } = searchData;
+    navigate(`/search-results`, {
+      state: {
+        destination,
+        startDate,
+        endDate,
+        hallType,
+      },
+    });
+  };
+
   return (
     <div className="home-container">
       {/* Header Section */}
@@ -27,7 +40,7 @@ export const Home = ({ handleLogout }) => {
         <p>We compare hotel prices from over 100 sites</p>
       </div>
       <section className="search-section">
-        <Datepick />
+        <Datepick handleSearch={handleSearch} searchData={{}}/>
       </section>
 
       <section className="providers-section">

@@ -1,119 +1,151 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import google_icon from './google.png';
-import application_logo from "./application-logo.png"
-import { GoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
-import './login.css';
+import { FaGoogle } from "react-icons/fa";
+import "./login.css";
+import { Loginimagedata } from "./image";
 
 export const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/home", { replace: true });
+    }
+  }, [navigate]);
 
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            navigate('/home', { replace: true });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:3000/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        localStorage.setItem("token", data.token);
+        alert("Login successful! Redirecting to Home Page...");
+        navigate("/Home", { replace: true });
+      } else {
+        alert(`Error: ${data.error}`);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Error during login");
+    }
+  };
+
+  //Google Login ....
+
+  const handleGoogleLoginSuccess = (credentialResponse) => {
+    const decoded = jwtDecode(credentialResponse.credential);
+    console.log("Decoded Google Token:", decoded);
+
+    fetch("http://localhost:3000/auth/google-login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: decoded.email,
+        name: decoded.name,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+          navigate("/Home", { replace: true });
+        } else {
+          alert("Error with Google login");
         }
-    }, []);
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+        alert("Error during Google login");
+      });
+  };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await fetch('http://localhost:3000/auth/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, password }),
-            });
+  const handleGoogleLoginError = () => {
+    console.error("Google Login failed.");
+    alert("Google Login failed. Please try again.");
+  };
 
-            const data = await response.json();
-            if (response.ok) {
-                localStorage.setItem('token', data.token);
-                alert('Login successful! Redirecting to Home Page...');
-                navigate('/Home', { replace: true });
-            } else {
-                alert(`Error: ${data.error}`);
-            }
-        } catch (error) {
-            console.error(error);
-            alert('Error during login');
-        }
-    };
+  const googleLogin = useGoogleLogin({
+    flow: "implicit",
+    ux_mode: "popup", // ✅ Ensures a popup is used instead of redirect
+    onSuccess: handleGoogleLoginSuccess,
+    onError: handleGoogleLoginError,
+    prompt: "select_account",
+  });
 
-    const handleGoogleLoginSuccess = (credentialResponse) => {
-        const decoded = jwtDecode(credentialResponse.credential);
-        console.log("Decoded Google Token:", decoded);
+  // const openGooglePopup = () => {
+  //   const googleWindow = window.open(
+  //     "https://accounts.google.com/o/oauth2/v2/auth?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI",
+  //     "_blank",
+  //     "width=500,height=600"
+  //   );
 
-        // Send Google login info to backend
-        fetch('http://localhost:3000/auth/google-login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                email: decoded.email,
-                name: decoded.name
-            })
-        }).then(response => response.json())
-            .then(data => {
-                if (data.token) {
-                    localStorage.setItem('token', data.token);
-                    navigate('/Home', { replace: true });
-                } else {
-                    alert('Error with Google login');
-                }
-            })
-            .catch(err => {
-                console.error('Error:', err);
-                alert('Error during Google login');
-            });
-    };
+  //   // Set window.name to ensure proper handling of popups
+  //   googleWindow.name = "googleLoginPopup";
+  // };
 
-    const handleGoogleLoginError = () => {
-        console.error("Google Login failed.");
-        alert("Google Login failed. Please try again.");
-    };
+  return (
+    <div className="login-container">
+      <Loginimagedata type="Login" />
+      <div className="logo-box">
+        <h3 id="website-name">MultiBooking Application</h3>
+        <h4 id="quote">Unlock more Savings as a member</h4>
 
-    return (
-        <div className="login-container">
-            <div className="logo-box">
-                <img className="application-logo" src={application_logo} alt="application-logo" ></img>
-                <h2>Sign in to Application</h2>
-                <button className="google-login-button">
-                    <GoogleLogin
-                        className="google-login-btn"
-                        onSuccess={handleGoogleLoginSuccess}
-                        onError={handleGoogleLoginError}
-                    />
-                </button>
-                <hr></hr>
-                <span>Or</span>
+        <button onClick={() => googleLogin()} id="google-login-btn">
+          <FaGoogle className="google-icon" />
+          Sign in with Google
+        </button>
 
-                <form id="loginForm" onSubmit={handleSubmit}>
-                    <input
-                        type="email"
-                        id="email"
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        name="email"
-                        required
-                    />
-                    <input
-                        type="password"
-                        id="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        name="password"
-                        required
-                    />
-                    <button id="submit" type="submit">Login</button>
-                    <p>Don't Have an account?<button id="sign-up" type="button" onClick={() => navigate('/register')}>Sign Up</button></p>
-
-                </form>
-
-            </div>
+        <div className="or-continue">
+          <hr />
+          <span>or continue</span>
+          <hr />
         </div>
-    );
+
+        <form id="loginForm" onSubmit={handleSubmit}>
+          <input
+            type="email"
+            id="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            name="email"
+            required
+          />
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            required
+          />
+          <button id="submit" type="submit">
+            <b>Login</b>
+          </button>
+          <div className="register-route">
+            Don't Have an account?
+            <button
+              id="sign-up"
+              type="button"
+              onClick={() => navigate("/register")}
+            >
+              Sign Up
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 };
