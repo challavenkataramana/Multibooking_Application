@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useGoogleLogin } from "@react-oauth/google";
+import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { FaGoogle } from "react-icons/fa";
 import "./login.css";
@@ -21,11 +21,14 @@ export const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+      const response = await fetch(
+        "https://multibooking-application.onrender.com/auth/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        }
+      );
 
       const data = await response.json();
       if (response.ok) {
@@ -47,7 +50,7 @@ export const Login = () => {
     const decoded = jwtDecode(credentialResponse.credential);
     console.log("Decoded Google Token:", decoded);
 
-    fetch("http://localhost:3000/auth/google-login", {
+    fetch("https://multibooking-application.onrender.com/auth/google-login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -75,13 +78,13 @@ export const Login = () => {
     alert("Google Login failed. Please try again.");
   };
 
-  const googleLogin = useGoogleLogin({
-    flow: "implicit",
-    ux_mode: "popup", // ✅ Ensures a popup is used instead of redirect
-    onSuccess: handleGoogleLoginSuccess,
-    onError: handleGoogleLoginError,
-    prompt: "select_account",
-  });
+  // const googleLogin = useGoogleLogin({
+  //   flow: "implicit",
+  //   ux_mode: "popup", // ✅ Ensures a popup is used instead of redirect
+  //   onSuccess: handleGoogleLoginSuccess,
+  //   onError: handleGoogleLoginError,
+  //   prompt: "select_account",
+  // });
 
   // const openGooglePopup = () => {
   //   const googleWindow = window.open(
@@ -100,18 +103,18 @@ export const Login = () => {
       <div className="logo-box">
         <h3 id="website-name">MultiBooking Application</h3>
         <h4 id="quote">Unlock more Savings as a member</h4>
-
-        <button onClick={() => googleLogin()} id="google-login-btn">
-          <FaGoogle className="google-icon" />
-          Sign in with Google
+        <button className="google-login-btn">
+        <GoogleLogin
+          className="google-login-btn"
+          onSuccess={handleGoogleLoginSuccess}
+          onError={handleGoogleLoginError}
+        />
         </button>
-
         <div className="or-continue">
           <hr />
           <span>or continue</span>
           <hr />
         </div>
-
         <form id="loginForm" onSubmit={handleSubmit}>
           <input
             type="email"
