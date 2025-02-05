@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
-import { FaGoogle } from "react-icons/fa";
 import "./login.css";
 import { Loginimagedata } from "./image";
 

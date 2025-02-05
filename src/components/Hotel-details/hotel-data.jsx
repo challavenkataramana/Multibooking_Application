@@ -13,7 +13,7 @@ export const HotelData = ({ handleLogout }) => {
   console.log("startDate", startDate);
   const [customerName, setCustomerName] = useState("");
   const [customerEmail, setCustomerEmail] = useState("");
-  const [message, setMessage] = useState("");
+  // const [message, setMessage] = useState("");
   const { additionalImages, loading } = useHotelData(hotel.id, hallType);
 
   const [isProcessing, setIsProcessing] = useState(false);

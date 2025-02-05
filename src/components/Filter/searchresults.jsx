@@ -14,7 +14,8 @@ const SearchResults = ({ handleLogout }) => {
     const [results, setResults] = useState([]);
     const [filteredResults, setFilteredResults] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [searchData, setSearchData] = useState({ destination, startDate, endDate, hallType });
+    // const [searchData, setSearchData] = useState({ destination, startDate, endDate, hallType });
+    const [searchData] = useState({ destination, startDate, endDate, hallType });
     const navigate = useNavigate();
     
     if(!destination && !startDate & !endDate && !hallType)  console.log("hi",searchData);
