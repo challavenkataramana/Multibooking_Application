@@ -15,7 +15,7 @@ export const Register = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://multibooking-application.onrender.com/auth/register", {
+      const response = await fetch("https://multibooking-application-backend.onrender.com/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -42,7 +42,7 @@ export const Register = (props) => {
     const decoded = jwtDecode(credentialResponse.credential);
     console.log("Decoded Google Token:", decoded);
 
-    fetch("https://multibooking-application.onrender.com/auth/google-login", {
+    fetch("https://multibooking-application-backend.onrender.com/auth/google-login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

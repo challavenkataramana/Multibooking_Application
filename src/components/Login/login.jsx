@@ -21,7 +21,7 @@ export const Login = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "https://multibooking-application.onrender.com/auth/login",
+        "https://multibooking-application-backend.onrender.com/auth/login",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -49,7 +49,7 @@ export const Login = () => {
     const decoded = jwtDecode(credentialResponse.credential);
     console.log("Decoded Google Token:", decoded);
 
-    fetch("https://multibooking-application.onrender.com/auth/google-login", {
+    fetch("https://multibooking-application-backend.onrender.com/auth/google-login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
