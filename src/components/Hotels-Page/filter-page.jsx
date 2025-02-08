@@ -17,19 +17,21 @@ const Filter = ({ onApplyFilter, halltype }) => {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://script.google.com/macros/s/AKfycbwiILpaFDVM7aO__6iOrdYtMTsrlzbM_Fd7oCzoiNsT6sDowEzKkR_AujD3sAkz9Oc/exec`
+        `https://script.google.com/macros/s/AKfycbwxIPMvGlhG92GR36zg7oqkePH_8FToWeLDtjjhZdwLQvKHw_Ib4ZUPtxxu5Ue_1qcU/exec`
       );
       const data = await response.json();
+      console.log("data",data)
       setHallTypeRanges(data);
     } catch (error) {
       console.error("Error fetching hall data:", error);
     }
     setLoading(false);
   };
-
+  console.log("hall type",halltype)
   useEffect(() => {
     if (hallTypeRanges[halltype]) {
       const ranges = hallTypeRanges[halltype];
+      console.log("ranges",ranges);
       setPriceRange([...ranges.price]);
       setCapacityRange([...ranges.capacity]);
     }

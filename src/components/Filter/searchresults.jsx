@@ -137,6 +137,7 @@ const SearchResults = ({ handleLogout }) => {
   };
 
   const handleApplyFilter = ({ priceRange, capacityRange }) => {
+    
     const filtered = results.filter(
       (result) =>
         result.price >= priceRange[0] &&
