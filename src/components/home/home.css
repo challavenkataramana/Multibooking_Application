@@ -21,7 +21,13 @@
   font-size: 24px;
   font-weight: bold;
   margin-left:110px;
+  cursor:pointer;
 }
+
+.app-name:hover {
+  color: rgb(189, 189, 207); 
+}
+
 
 .nav-buttons {
   display: flex;
