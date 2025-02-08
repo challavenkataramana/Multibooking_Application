@@ -32,7 +32,7 @@ export const YourBookings = ({ handleLogout }) => {
 
     try {
       const response = await fetch(
-        `https://script.google.com/macros/s/AKfycbxXgM-cCIcub-eXQmN_bQG_jMTusq0s80-zMM4czmzTn49dWsh7xGVl3eEgg-RN51Ex/exec?userId=${userId}`
+        `https://script.google.com/macros/s/AKfycbygHBoIrwxoAizD4DdD9ngsUOEG_MbmykHNADBYqr_Y-2fVT7rgELvaOXMmum5KGS_i/exec?userId=${userId}`
       );
       const data = await response.json();
       if (data.success) {

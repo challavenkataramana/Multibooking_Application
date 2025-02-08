@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
+import { Alert } from "@mui/material"; 
 import "./login.css";
 import { Loginimagedata } from "./image";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [alertMessage, setAlertMessage] = useState(null); 
+  const [alertSeverity, setAlertSeverity] = useState("info"); 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,19 +35,26 @@ export const Login = () => {
       const data = await response.json();
       if (response.ok) {
         localStorage.setItem("token", data.token);
-        alert("Login successful! Redirecting to Home Page...");
-        navigate("/Home", { replace: true });
+
+        setAlertMessage("Login successful! Redirecting to Home Page...");
+        setAlertSeverity("success");
+
+        setTimeout(() => {
+          navigate("/Home", { replace: true });
+        }, 2000); 
       } else {
-        alert(`Error: ${data.error}`);
+        
+        setAlertMessage(`Error: ${data.error}`);
+        setAlertSeverity("error");
       }
     } catch (error) {
       console.error(error);
-      alert("Error during login");
+      setAlertMessage("Error during login");
+      setAlertSeverity("error");
     }
   };
 
-  //Google Login ....
-
+  // Google Login
   const handleGoogleLoginSuccess = (credentialResponse) => {
     const decoded = jwtDecode(credentialResponse.credential);
     console.log("Decoded Google Token:", decoded);
@@ -61,40 +71,30 @@ export const Login = () => {
       .then((data) => {
         if (data.token) {
           localStorage.setItem("token", data.token);
-          navigate("/Home", { replace: true });
+          
+          setAlertMessage("Google login successful! Redirecting...");
+          setAlertSeverity("success");
+
+          setTimeout(() => {
+            navigate("/Home", { replace: true });
+          }, 2000);
         } else {
-          alert("Error with Google login");
+          setAlertMessage("Error with Google login");
+          setAlertSeverity("error");
         }
       })
       .catch((err) => {
         console.error("Error:", err);
-        alert("Error during Google login");
+        setAlertMessage("Error during Google login");
+        setAlertSeverity("error");
       });
   };
 
   const handleGoogleLoginError = () => {
     console.error("Google Login failed.");
-    alert("Google Login failed. Please try again.");
+    setAlertMessage("Google Login failed. Please try again.");
+    setAlertSeverity("error");
   };
-
-  // const googleLogin = useGoogleLogin({
-  //   flow: "implicit",
-  //   ux_mode: "popup", // ✅ Ensures a popup is used instead of redirect
-  //   onSuccess: handleGoogleLoginSuccess,
-  //   onError: handleGoogleLoginError,
-  //   prompt: "select_account",
-  // });
-
-  // const openGooglePopup = () => {
-  //   const googleWindow = window.open(
-  //     "https://accounts.google.com/o/oauth2/v2/auth?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI",
-  //     "_blank",
-  //     "width=500,height=600"
-  //   );
-
-  //   // Set window.name to ensure proper handling of popups
-  //   googleWindow.name = "googleLoginPopup";
-  // };
 
   return (
     <div className="login-container">
@@ -102,18 +102,28 @@ export const Login = () => {
       <div className="logo-box">
         <h3 id="website-name">MultiBooking Application</h3>
         <h4 id="quote">Unlock more Savings as a member</h4>
+
+       
+        {alertMessage && (
+          <Alert severity={alertSeverity} style={{ marginBottom: "10px" }}>
+            {alertMessage}
+          </Alert>
+        )}
+
         <button className="google-login-btn">
-        <GoogleLogin
-          className="google-login-btn"
-          onSuccess={handleGoogleLoginSuccess}
-          onError={handleGoogleLoginError}
-        />
+          <GoogleLogin
+            className="google-login-btn"
+            onSuccess={handleGoogleLoginSuccess}
+            onError={handleGoogleLoginError}
+          />
         </button>
+
         <div className="or-continue">
           <hr />
           <span>or continue</span>
           <hr />
         </div>
+
         <form id="loginForm" onSubmit={handleSubmit}>
           <input
             type="email"

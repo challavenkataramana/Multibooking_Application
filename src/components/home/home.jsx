@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "./home.css";
-import { Banglore } from './Top_rated-hotels/banglore';
-import { Hyderabad } from './Top_rated-hotels/hyderabad';
-import { Mumbai } from './Top_rated-hotels/mumbai';
+import { CardData } from './Top_rated-hotels/trending-hotels_data.jsx';
 import Footer from './footer';
 import { Datepick } from './dates';
 import { Cards } from './cards.jsx';
@@ -12,14 +10,22 @@ import { Header } from './header';
 export const Home = ({ handleLogout }) => {
 
   const [currentTab, setCurrentTab] = useState("banglore");
-  const navigate = useNavigate();
 
+  const [datesData, setDatesData] = useState({
+    startDate: new Date().toISOString().split("T")[0], 
+    endDate: new Date(new Date().setDate(new Date().getDate() + 1))
+      .toISOString()
+      .split("T")[0], 
+  });
+  const navigate = useNavigate();
+  
   const handleSubmit = (city) => {
     setCurrentTab(city);
   }
 
   const handleSearch = (searchData) => {
     const { destination, startDate, endDate, hallType } = searchData;
+    console.log("home page",searchData);
     navigate(`/search-results`, {
       state: {
         destination,
@@ -29,6 +35,33 @@ export const Home = ({ handleLogout }) => {
       },
     });
   };
+
+
+  const handletrendingdata=(hotel)=>{
+    const hallType="Trending-Hotels";
+    navigate(`/search-results`, {
+      state: {
+        destination:hotel.location,
+        startDate:datesData.startDate,
+        endDate:datesData.endDate,
+        hallType,
+        hotelId:hotel.id,
+      },
+    });
+  }
+
+  const handlehotdealsdata=(hotel)=>{
+    const hallType="Hot-Deals";
+    navigate(`/search-results`, {
+      state: {
+        destination:hotel.location,
+        startDate:datesData.startDate,
+        endDate:datesData.endDate,
+        hallType,
+        hotelId:hotel.id,
+      },
+    });
+  }
 
   return (
     <div className="home-container">
@@ -40,7 +73,7 @@ export const Home = ({ handleLogout }) => {
         <p>We compare hotel prices from over 100 sites</p>
       </div>
       <section className="search-section">
-        <Datepick handleSearch={handleSearch} searchData={{}}/>
+        <Datepick handleSearch={handleSearch} searchData={{}}  />
       </section>
 
       <section className="providers-section">
@@ -57,7 +90,7 @@ export const Home = ({ handleLogout }) => {
       </section>
       <h2 className="hot-deals">Hot deals right now</h2>
       <section className="carousel-section">
-        <Cards />
+           <Cards handledata={handlehotdealsdata} />
       </section>
 
       <section className="top-hotels">
@@ -68,9 +101,10 @@ export const Home = ({ handleLogout }) => {
           <button className={`city-tab ${currentTab === "mumbai" ? "active" : ""}`} onClick={() => { handleSubmit("mumbai") }}>Mumbai</button>
         </div>
         <div className="selected-cities">
-          {currentTab === "mumbai" && <Mumbai />}
+          {/* {currentTab === "mumbai" && <Mumbai />}
           {currentTab === "banglore" && <Banglore />}
-          {currentTab === "hyderabad" && <Hyderabad />}
+          {currentTab === "hyderabad" && <Hyderabad />} */}
+            <CardData handledata={handletrendingdata} city={currentTab} />
         </div>
       </section>
       <Footer />  {/* Footer Section */}

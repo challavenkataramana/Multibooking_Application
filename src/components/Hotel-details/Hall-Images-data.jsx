@@ -10,7 +10,7 @@ export const useHotelData = (id, hotelType) => {
     try {
 
       const response = await fetch(
-        `https://script.google.com/macros/s/AKfycbx-ZetqOwdbCHkalmWr_hGDhB7t9NIQQutj1SGbd5FTyXlbEp4cuZdQR3OtyHf-thB-/exec?sheet=${hotelType}`
+        `https://script.google.com/macros/s/AKfycbxkIvwEAQzH76RbrvoF52BSYpnHBjyxdxW14eiR6j-E802iyYY3gCK60dcnsAhrklyt/exec?sheet=${hotelType}`
       );
       const data = await response.json();
 

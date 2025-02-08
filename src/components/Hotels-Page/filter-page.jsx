@@ -21,7 +21,6 @@ const Filter = ({ onApplyFilter, halltype }) => {
       );
       const data = await response.json();
       setHallTypeRanges(data);
-      console.log("Hall Data:", data);
     } catch (error) {
       console.error("Error fetching hall data:", error);
     }
@@ -142,7 +141,7 @@ const Filter = ({ onApplyFilter, halltype }) => {
                         type="range"
                         min={ranges.capacity[0]}
                         max={ranges.capacity[1]}
-                        step="10"
+                        step="1"
                         value={capacityRange[0]}
                         onChange={(e) => handleCapacityChange(e, "min")}
                         className="slider"
@@ -151,7 +150,7 @@ const Filter = ({ onApplyFilter, halltype }) => {
                         type="range"
                         min={ranges.capacity[0]}
                         max={ranges.capacity[1]}
-                        step="10"
+                        step="1"
                         value={capacityRange[1]}
                         onChange={(e) => handleCapacityChange(e, "max")}
                         className="slider"

@@ -28,6 +28,10 @@ export const HotelData = ({ handleLogout }) => {
       ? "resorts"
       : hallType === "Cricket-Grounds"
       ? "cricketGrounds"
+        : hallType === "Trending-Hotels"
+      ? "trendingHotels"
+         : hallType === "Hot-Deals"
+      ? "hotDeals"
       : hallType === "Conference-Halls"
       ? "conferenceHalls"
       : "";
@@ -41,6 +45,10 @@ export const HotelData = ({ handleLogout }) => {
       ? "resort"
       : hallType === "Cricket-Grounds"
       ? "cricketGround"
+        : hallType === "Trending-Hotels"
+      ? "trendingHotel"
+          : hallType === "Hot-Deals"
+      ? "hotDeal"
       : hallType === "Conference-Halls"
       ? "conferenceHall"
       : "";
@@ -78,7 +86,7 @@ export const HotelData = ({ handleLogout }) => {
 
     try {
       const response = await fetch(
-        `https://api.sheety.co/f66a20c2cec36c5c18f352bc96c9a03c/bookingHalls/${sheetName}`,
+        `https://api.sheety.co/80baa5bdcdd628685561be76f4b03365/bookingHalls/${sheetName}`,
         {
           method: "POST",
           headers: {
@@ -96,7 +104,7 @@ export const HotelData = ({ handleLogout }) => {
       }
 
       const googleScriptUrl = new URL(
-        "https://script.google.com/macros/s/AKfycbw1EJ3oISV6pzY5ufZ0ZT3XvqiJlSpjkjHRH6OWJdGM9NZYY1Ir0jONnrooItXm49W4/exec"
+        "https://script.google.com/macros/s/AKfycbygHBoIrwxoAizD4DdD9ngsUOEG_MbmykHNADBYqr_Y-2fVT7rgELvaOXMmum5KGS_i/exec"
       );
 
       googleScriptUrl.searchParams.append("hallName", hotel.title);
@@ -190,7 +198,7 @@ export const HotelData = ({ handleLogout }) => {
               {isProcessing
                 ? "Processing..."
                 : isBooked
-                ? "Booking Successful!"
+                ? "Booking Successful!" 
                 : "Book"}
             </button>
           </form>

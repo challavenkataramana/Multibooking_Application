@@ -283,92 +283,90 @@
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-
-
-
-
-
-
-
+/* Mobile and small screen styles */
 /* Mobile and small screen styles */
 @media screen and (max-width: 768px) {
   .carousel {
     width: 100%;
     overflow: hidden;
-    margin: 0; 
+    margin: 0;
     padding: 0 15px;
   }
 
   .carousel-cards {
     display: flex;
-    gap: 12px; 
+    gap: 12px;
     padding: 12px 0;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory; 
+    overflow-x: auto; /* Enable full horizontal scrolling */
+    scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scroll-padding: 0 15px;
-    scrollbar-width: none;
-    background:#f7f4f4;
-    border-radius:5px;
+    scrollbar-width: none; /* Hide scrollbar */
+    background: #f7f4f4;
+    border-radius: 5px;
+  }
+
+  .carousel-cards::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in WebKit browsers */
   }
 
   .carousel-card {
     flex: 0 0 auto;
     width: 220px;
     height: auto;
-    scroll-snap-align: start; 
+    scroll-snap-align: start;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     padding: 0px;
     text-align: left;
-
   }
 
-
   .carousel-card:hover {
-   box-shadow: none;
-   transform: none; 
-}
+    box-shadow: none;
+    transform: none;
+  }
 
   .carousel-card img {
     width: 100%;
-    height: 150px; 
+    height: 150px;
   }
-  .placeholder-image{
+
+  .placeholder-image {
     width: 100%;
-    height: 150px; 
+    height: 150px;
   }
 
   .carousel-card h3 {
-    font-size: 16px; 
+    font-size: 16px;
     margin: 4px 0;
-    margin-left:7px; 
+    margin-left: 7px;
   }
 
   .carousel-card p {
     font-size: 12px;
     color: #666;
     margin: 4px 0;
-    margin-left:7px;
+    margin-left: 7px;
   }
 
   .carousel-card .check-deals-button {
     background-color: #007bff;
     color: #fff;
     border: none;
-    padding: 6px 12px; 
+    padding: 6px 12px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 12px; 
+    font-size: 12px;
   }
 
   .carousel-card .check-deals-button:hover {
     background-color: #0056b3;
   }
+
   .carousel .prev,
   .carousel .next {
-    display: none;
+    display: none; /* Hide navigation buttons on mobile */
   }
 }
 
