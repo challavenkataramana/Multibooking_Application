@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { GoogleLogin,useGoogleLogin } from "@react-oauth/google";
+import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 import { FaGoogle } from "react-icons/fa";
 import { jwtDecode } from "jwt-decode";
+import { Alert } from "@mui/material"; 
 import { Loginimagedata } from "../Login/image";
 
 import "./register.css";
@@ -11,30 +12,41 @@ export const Register = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [alertMessage, setAlertMessage] = useState(null);
+  const [alertSeverity, setAlertSeverity] = useState("info");
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://multibooking-application-backend.onrender.com/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          email,
-          password,
-        }),
-      });
+      const response = await fetch(
+        "https://multibooking-application-backend.onrender.com/auth/register",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name,
+            email,
+            password,
+          }),
+        }
+      );
 
       const data = await response.json();
       if (response.ok) {
-        alert("Registration Successful! Please log in.");
-        navigate("/login");
+        setAlertMessage("Registration Successful! Please log in.");
+        setAlertSeverity("success");
+
+        setTimeout(() => {
+          navigate("/login", { replace: true });
+        }, 2000);
       } else {
-        alert("Registration Failed: " + data.error);
+        setAlertMessage(`Registration Failed:: ${data.error}`);
+        setAlertSeverity("error");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("An error occurred during registration.");
+      setAlertMessage("Error during Registration");
+      setAlertSeverity("error");
     }
   };
 
@@ -42,14 +54,17 @@ export const Register = (props) => {
     const decoded = jwtDecode(credentialResponse.credential);
     console.log("Decoded Google Token:", decoded);
 
-    fetch("https://multibooking-application-backend.onrender.com/auth/google-login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: decoded.email,
-        name: decoded.name,
-      }),
-    })
+    fetch(
+      "https://multibooking-application-backend.onrender.com/auth/google-login",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: decoded.email,
+          name: decoded.name,
+        }),
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         if (data.token) {
@@ -86,11 +101,17 @@ export const Register = (props) => {
             <FaGoogle className="google-icon" />
             Sign up with Google
           </button> */}
-           <GoogleLogin
-                        className="google-login-btn"
-                        onSuccess={handleGoogleLoginSuccess}
-                        onError={handleGoogleLoginError}
-                    />
+
+          {alertMessage && (
+            <Alert severity={alertSeverity} style={{ marginBottom: "10px" }}>
+              {alertMessage}
+            </Alert>
+          )}
+          <GoogleLogin
+            className="google-login-btn"
+            onSuccess={handleGoogleLoginSuccess}
+            onError={handleGoogleLoginError}
+          />
 
           <div className="or-continue">
             <hr />
