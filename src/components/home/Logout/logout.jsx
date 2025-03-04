@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaBook, FaEye, FaSignOutAlt,f } from "react-icons/fa";
+import { FaBook, FaEye, FaSignOutAlt,FaUserCircle } from "react-icons/fa";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import "./logout.css";
