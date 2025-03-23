@@ -4,4 +4,4 @@ The application features a secure authentication system integrating Google Login
 
 For data management, Google Sheets was used as a backend to efficiently store and handle hotel information. Additionally, a dynamic carousel feature was implemented to enhance user engagement by providing an interactive way to explore available hotels.
 
-Backend Repository: https://github.com/challavenkataramana/Multi-Booking-Backend
+Backend Repository: https://github.com/challavenkataramana/MultiBooking_Application-Backend
